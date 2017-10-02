@@ -1,7 +1,6 @@
-# spring-boot
-更名为swallow<br>
+# swallow
 后台：<br>
-**springMVC+Mybatis+freemarke+Mysql+redis<br>**
+**springMVC+Mybatis+freemarke+Mysql+redis+MybatisPlus<br>**
 前端：<br>
 **整体：easyui和ace admin<br>文件上传：Dropzone.js<br>日历：calendar<br>弹窗：layer<br>消息提示：toarst**
 <br><br>这是spring-boot的学习框架，准备将其打造成个人的整体开发框架
@@ -37,3 +36,7 @@
 *2017.9.29 shiro登录全部完成	add by cy
 
 *2017.9.30 集成shiro之后，去除之前的默认的拦截器	add by cy
+
+*2017.9.30 tabs菜单，双击事件   add  by  zyj
+
+*2017.10.1 持久层集成MP,修改所有的持久层方法，修改业务层接口名称   add  by  cy
