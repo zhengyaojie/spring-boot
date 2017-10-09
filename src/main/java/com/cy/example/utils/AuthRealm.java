@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.cy.example.entity.SysPermisEntity;
+import com.cy.example.entity.SysPermissionEntity;
 import com.cy.example.entity.SysRoleEntity;
 import com.cy.example.entity.UserEntity;
 import com.cy.example.service.IUserService;
@@ -34,9 +34,9 @@ public class AuthRealm extends AuthorizingRealm {
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 		UserEntity user = (UserEntity) principals.getPrimaryPrincipal();
 		for (SysRoleEntity role : user.getRoleList()) {
-			authorizationInfo.addRole(role.getC_roleName());
-			for (SysPermisEntity p : role.getPermisList()) {
-				authorizationInfo.addStringPermission(p.getC_permisName());
+			authorizationInfo.addRole(role.getC_roleCode());
+			for (SysPermissionEntity p : role.getPermisList()) {
+				authorizationInfo.addStringPermission(p.getC_permisCode());
 			}
 		}
 		logger.info(user.toString());

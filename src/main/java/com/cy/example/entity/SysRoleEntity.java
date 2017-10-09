@@ -3,18 +3,23 @@ package com.cy.example.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 
 @TableName("sys_roles")
 @SuppressWarnings("serial")
 public class SysRoleEntity extends SuperEntity<SysRoleEntity> {
 
+	private String c_roleCode;
+	
 	private String c_roleName;
 
-	private List<SysPermisEntity> permisList;// 一个角色对应多个权限
+	@TableField(exist = false)
+	private List<SysPermissionEntity> permisList;// 一个角色对应多个权限
 
+	@TableField(exist = false)
 	private List<UserEntity> userList;// 一个角色对应多个用户
-
+	
 	public String getC_roleName() {
 		return c_roleName;
 	}
@@ -23,11 +28,19 @@ public class SysRoleEntity extends SuperEntity<SysRoleEntity> {
 		this.c_roleName = c_roleName;
 	}
 
-	public List<SysPermisEntity> getPermisList() {
+	public String getC_roleCode() {
+		return c_roleCode;
+	}
+
+	public void setC_roleCode(String c_roleCode) {
+		this.c_roleCode = c_roleCode;
+	}
+
+	public List<SysPermissionEntity> getPermisList() {
 		return permisList;
 	}
 
-	public void setPermisList(List<SysPermisEntity> permisList) {
+	public void setPermisList(List<SysPermissionEntity> permisList) {
 		this.permisList = permisList;
 	}
 
@@ -41,17 +54,13 @@ public class SysRoleEntity extends SuperEntity<SysRoleEntity> {
 
 	public List<String> getPermissionsName() {
 		List<String> list = new ArrayList<String>();
-		List<SysPermisEntity> perlist = getPermisList();
-		for (SysPermisEntity per : perlist) {
+		List<SysPermissionEntity> perlist = getPermisList();
+		for (SysPermissionEntity per : perlist) {
 			list.add(per.getC_permisName());
 		}
 		return list;
 	}
 
-	@Override
-	public String toString() {
-		return "SysRoleEntity [c_roleName=" + c_roleName + ", permisList="
-				+ permisList + ", userList=" + userList + "]";
-	}
+
 
 }
